@@ -180,7 +180,7 @@ jobs:
   
       - name: Build
         run: |
-          pio run -e production
+          pio run -e production_application
 
       - name: Attach Binary to Workflow run
         id: attachbinarytoworkflowrun
