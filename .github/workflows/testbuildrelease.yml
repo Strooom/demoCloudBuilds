@@ -25,11 +25,6 @@ jobs:
       buildversionfilename: ${{ steps.selectversion.outputs.buildversionfilename }}
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
       - name: Enable caching
         uses: actions/cache@v3
         with:
@@ -38,6 +33,11 @@ jobs:
             ~/.platformio/.cache
           key: ${{ runner.os }}-pio
 
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+    
       - name: Get version data
         id: versioninfo
         run: |
