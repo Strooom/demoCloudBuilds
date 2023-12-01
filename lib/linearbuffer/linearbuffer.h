@@ -1,6 +1,6 @@
 // #############################################################################
-// ### This file is part of the source code for the MuMo project             ###
-// ### https://github.com/Strooom/MuMo-v2-Node-SW                            ###
+// ### This file is part of the source code for the demoCloudbuilds blog     ###
+// ### https://github.com/Strooom/demoCloudBuilds                            ###
 // ### Author(s) : Pascal Roobrouck - @strooom                               ###
 // ### License : https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode ###
 // #############################################################################
@@ -10,7 +10,6 @@
 #include <string.h>
 
 // template class for a byte buffer.
-// In LoRaWAN data is usually binary io null terminated strings, so I use this class to easily pass data around between application, Lorawan and the LoRa modem
 
 template <uint32_t bufferLength>
 class linearBuffer {
