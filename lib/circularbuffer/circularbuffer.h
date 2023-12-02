@@ -25,28 +25,15 @@ class circularBuffer {
     };
 
     void push(itemType event) {
-#ifndef environment_desktop
-        bool interrupts_enabled = (__get_PRIMASK() == 0);
-        __disable_irq();
-#endif
         theBuffer[(head + level) % bufferLength] = event;
         if (level < bufferLength) {
             level++;
         } else {
             head = (head + 1) % bufferLength;
         }
-#ifndef environment_desktop
-        if (interrupts_enabled) {
-            __enable_irq();
-        }
-#endif
     };
 
     itemType pop() {
-#ifndef environment_desktop
-        bool interrupts_enabled = (__get_PRIMASK() == 0);
-        __disable_irq();
-#endif
         itemType result;
         if (level > 0) {
             result = theBuffer[head];
@@ -55,11 +42,6 @@ class circularBuffer {
         } else {
             result = static_cast<itemType>(0x00);
         }
-#ifndef environment_desktop
-        if (interrupts_enabled) {
-            __enable_irq();
-        }
-#endif
         return result;
     };
 
