@@ -6,7 +6,7 @@ from datetime import datetime
 
 Import("env")
 
-# determine the build version by callling : git describe --tag $(git rev-parse --verify refs/remotes/origin/main)
+# determine the latest releasev semver
 latest_release_tag = subprocess.run(["git", "describe", "--tags"], stdout=subprocess.PIPE, text=True)
 latest_release_tag = latest_release_tag.stdout.strip()
 print ("\033[93;1;4mLatest Release Tag     : " + latest_release_tag + "\033[0m")
@@ -19,11 +19,10 @@ latest_release_digits = latest_release_semver.split(".")
 latest_release_main = latest_release_digits[0]
 latest_release_minor = latest_release_digits[1]
 latest_release_patch = latest_release_digits[2]
-latest_release_dev = latest_release_tag_parts[1]
 print ("\033[93;1;4mLatest Release Main    : " + latest_release_main + "\033[0m")
 print ("\033[93;1;4mLatest Release Minor   : " + latest_release_minor + "\033[0m")
 print ("\033[93;1;4mLatest Release Patch   : " + latest_release_patch + "\033[0m")
-print ("\033[93;1;4mLatest Release Dev     : " + latest_release_dev + "\033[0m")
+
 
 # determine current commit hash
 current_commit_hash = subprocess.run(["git", "rev-parse", "--short", "HEAD"], stdout=subprocess.PIPE, text=True)

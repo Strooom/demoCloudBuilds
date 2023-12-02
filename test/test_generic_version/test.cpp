@@ -1,5 +1,9 @@
-#define unitTest
+#ifndef generic_hw
+#include <Arduino.h>
+#else
 #include <cstring>
+#endif
+
 #include <unity.h>
 #include "version.h"
 #include "buildinfo.h"
