@@ -1,5 +1,4 @@
 #include <unity.h>
-
 #include "circularbuffer.h"
 
 void setUp(void) {}           // before test
