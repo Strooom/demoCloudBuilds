@@ -5,6 +5,7 @@
 
 class version {
   public:
+    version() = delete;
     static uint8_t getIsVersionMajor() { return isVersionMajor; }
     static uint8_t getIsVersionMinor() { return isVersionMinor; }
     static uint8_t getIsVersionPatch() { return isVersionPatch; }
