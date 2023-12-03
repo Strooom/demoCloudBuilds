@@ -124,10 +124,10 @@ class linearBuffer {
         }
     }
 
-#ifndef unitTesting
+    // #################################
+    // ### member data               ###
+    // #################################
 
-  private:
-#endif
     uint32_t level{0};                        // how many bytes are in the buffer
     uint8_t theBuffer[bufferLength]{};        // the array where the actual data is stored
 };
