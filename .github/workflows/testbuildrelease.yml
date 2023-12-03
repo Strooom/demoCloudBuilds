@@ -89,17 +89,17 @@ jobs:
               declare buildversionfilename=$(echo "${buildversion//./_}")
 
             elif [[ "${{ github.event.head_commit.message }}" == *"minor"* ]]; then
-            echo "Incrementing Minor versionDigit"
-            declare -i nextmajordigit=$lastmajordigit
-              declare -i nextminordigit=$lastminordigit+1
+              echo "Incrementing Minor versionDigit"
+              declare -i nextmajordigit=${{ steps.versioninfo.outputs.lastmajordigit }}
+              declare -i nextminordigit=${{ steps.versioninfo.outputs.lastminordigit }}+1
               declare -i nextpatchdigit=0
               declare buildversion="v$nextmajordigit.$nextminordigit.$nextpatchdigit"
               declare buildversionfilename=$(echo "${buildversion//./_}")
             else
               echo "Incrementing Patch versionDigit"
-              declare -i nextmajordigit=$lastmajordigit
-              declare -i nextminordigit=$lastminordigit
-              declare -i nextpatchdigit=$lastpatchdigit+1
+              declare -i nextmajordigit=${{ steps.versioninfo.outputs.lastmajordigit }}
+              declare -i nextminordigit=${{ steps.versioninfo.outputs.lastminordigit }}
+              declare -i nextpatchdigit=${{ steps.versioninfo.outputs.lastpatchdigit }}+1
               declare buildversion="v$nextmajordigit.$nextminordigit.$nextpatchdigit"
               declare buildversionfilename=$(echo "${buildversion//./_}")
             fi
